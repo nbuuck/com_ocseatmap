@@ -39,5 +39,16 @@ THE SOFTWARE.
             <option value="0">JFALSE</option>
             <option value="1">JTRUE</option>
         </field>
+        <field
+            name="paypal_sandbox"
+            type="radio"
+            class="btn-group"
+            label="COM_OCSEATMAP_CONFIG_FS_GENERAL_PAYPAL_SANDBOX"
+            description="COM_OCSEATMAP_CONFIG_FS_GENERAL_PAYPAL_SANDBOX_DESC"
+            default="1"
+        >
+            <option value="0">JFALSE</option>
+            <option value="1">JTRUE</option>
+        </field>
     </fieldset>
 </config>
