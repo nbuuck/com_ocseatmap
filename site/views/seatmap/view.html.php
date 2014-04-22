@@ -25,12 +25,15 @@
  */
 
 defined('_JEXEC') or die('Restricted access');
-jimport('joomla.application.component.controller');
-$controller = JControllerLegacy::getInstance('OCSeatMap');
+jimport('joomla.application.component.view');
  
-// Perform the Request task
-$input = JFactory::getApplication()->input;
-$controller->execute($input->getCmd('task'));
-
-// Redirect if set by the controller
-$controller->redirect();
+class OCSeatMapViewSeatMap extends JViewLegacy
+{
+        // Overwriting JView display method
+        function display($tpl = null) 
+        {
+                // Assign data to the view
+                $this->msg = 'OCSeatMapViewSeatMap';
+                parent::display($tpl);
+        }
+}
