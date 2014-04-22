@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.2.3" method="upgrade">
-	<name>com_ocseatmap</name>
-	<creationDate>April 2014</creationDate>
-	<author>Nathan Buuck</author>
-	<authorEmail>nbuuck [at] gmail _dot_ com</authorEmail>
-	<authorUrl>http://www.lanoc.org</authorUrl>
-	<license>The MIT License</license>
-	<version>0.0.1</version>
-	<description>COM_OCSEATMAP_COM_DESCRIPTION</description>
+    <name>com_ocseatmap</name>
+    <creationDate>April 2014</creationDate>
+    <author>Nathan Buuck</author>
+    <authorEmail>nbuuck [at] gmail _dot_ com</authorEmail>
+    <authorUrl>http://www.lanoc.org</authorUrl>
+    <license>The MIT License</license>
+    <version>0.0.1</version>
+    <description>COM_OCSEATMAP_COM_DESCRIPTION</description>
 
-	<update>
-		<schemas>
-			<schemapath type="mysql">sql/updates/mysql</schemapath>
-		</schemas>
-	</update>
-        
-	<files folder="site">
-		<filename>index.html</filename>
-		<filename>ocseatmap.php</filename>
-                <filename>controller.php</filename>
-                <folder>views</folder>
-	</files>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
 
-	<administration>
-		<menu>COM_OCSEATMAP</menu>
-		<files folder="admin">
-			<filename>index.html</filename>
-			<filename>ocseatmap.php</filename>
-                        <filename>config.xml</filename>
-			<folder>sql</folder>
-                        <folder>language</folder>
-		</files>
-	</administration>
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>ocseatmap.php</filename>
+        <filename>controller.php</filename>
+        <folder>views</folder>
+    </files>
+
+    <administration>
+        <menu>COM_OCSEATMAP</menu>
+        <files folder="admin">
+            <filename>index.html</filename>
+            <filename>ocseatmap.php</filename>
+            <filename>config.xml</filename>
+            <folder>sql</folder>
+            <folder>language</folder>
+        </files>
+    </administration>
 
 </extension>
