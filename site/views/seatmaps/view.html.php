@@ -27,13 +27,14 @@
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
  
-class OCSeatMapViewSeatMap extends JViewLegacy
+class OCSeatMapViewSeatMaps extends JViewLegacy
 {
         // Overwriting JView display method
         function display($tpl = null) 
         {
                 // Assign data to the view
-                $this->msg = 'OCSeatMapViewSeatMap';
+                $model = $this->getModel();
+                $this->SeatMaps = $model->getSeatMaps();
                 parent::display($tpl);
         }
 }

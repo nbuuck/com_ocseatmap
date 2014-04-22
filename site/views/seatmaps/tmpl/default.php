@@ -26,4 +26,17 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<h1><?php echo $this->msg; ?></h1>
+<table>
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <?php foreach($this->SeatMaps as $row): ?>
+        <tr>
+            <td><?php echo $row->ID; ?></td>
+            <td><?php echo $row->Name; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

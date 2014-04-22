@@ -24,9 +24,9 @@ THE SOFTWARE.
 -->
 
 <metadata>
-        <layout title="COM_OCSEATMAP_VIEW_SEATMAP_TITLE">
+        <layout title="COM_OCSEATMAP_VIEW_SEATMAPS_TITLE">
                 <message>
-                        <![CDATA[COM_OCSEATMAP_VIEW_SEATMAP_DESC]]>
+                        <![CDATA[COM_OCSEATMAP_VIEW_SEATMAPS_DESC]]>
                 </message>
         </layout>
 </metadata>
