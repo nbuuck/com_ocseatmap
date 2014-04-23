@@ -26,46 +26,56 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<table>
-    <tbody>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Size</th>
-        </tr>
-        <?php foreach($this->SeatMaps as $row): ?>
-        <tr>
-            <td><?php echo $row->ID; ?></td>
-            <td><?php echo $row->Name; ?></td>
-            <td><?php echo $row->SizeX.",".$row->SizeY; ?></td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <table style="border-width:1px; border-style: solid;">
-                    <tbody>
-                        <?php for($y=0; $y < $row->SizeY; $y++){ ?>
-                        <tr>
-                            <?php for($x=0; $x < $row->SizeX; $x++){
-                                echo "<td style=\"width:12px;\">";
-                                $found = false;
-                                foreach($row->Seats as $seat)
-                                {
-                                    if($seat->PositionX == $x
-                                        && $seat->PositionY == $y)
-                                    {
-                                        echo substr($seat->SeatTypeName,0,1);
-                                        $found = true;
-                                    }
-                                }
-                                if(!$found){ echo "X"; }
-                                echo "</td>";
-                            } ?>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>                
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<style type="text/css">
+    tr.seats{
+        height:10px;
+    }
+    td.seat{
+        border:1px solid black;
+        width:10px;
+    }
+    td.seat-player{
+        background-color:orange;
+    }
+    td.seat-vip{
+        background-color:purple;
+    }
+</style>
+
+<?php foreach($this->SeatMaps as $row): 
+    print_r($row); ?>
+    <table style="border-width:1px; border-style: solid;">
+        <tbody>
+            <?php for($y=0; $y < $row->SizeY; $y++){ ?>
+            <tr class="seats">
+                <?php for($x=0; $x < $row->SizeX; $x++){
+                    $isPlayer = false;
+                    $isVIP = false;
+                    foreach($row->Seats as $seat)
+                    {
+                        if($seat->PositionX == $x
+                            && $seat->PositionY == $y)
+                        {
+                            if($seat->SeatTypeName == "Player"){
+                                $isPlayer = true;
+                                break;
+                            }
+                            if($seat->SeatTypeName == "VIP"){
+                                $isVIP = true;
+                                break;
+                            }
+                        }
+                    }
+                    echo "<td class=\"seat";
+                    if($isVIP){
+                        echo " seat-vip";
+                    }elseif($isPlayer){
+                        echo " seat-player";
+                    }
+                    echo "\"></td>";
+                } ?>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>                
+<?php endforeach;
