@@ -31,11 +31,40 @@ defined('_JEXEC') or die('Restricted access');
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Size</th>
         </tr>
         <?php foreach($this->SeatMaps as $row): ?>
         <tr>
             <td><?php echo $row->ID; ?></td>
             <td><?php echo $row->Name; ?></td>
+            <td><?php echo $row->SizeX.",".$row->SizeY; ?></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table style="border-width:1px; border-style: solid;">
+                    <tbody>
+                        <?php for($y=0; $y < $row->SizeY; $y++){ ?>
+                        <tr>
+                            <?php for($x=0; $x < $row->SizeX; $x++){
+                                echo "<td style=\"width:12px;\">";
+                                $found = false;
+                                foreach($row->Seats as $seat)
+                                {
+                                    if($seat->PositionX == $x
+                                        && $seat->PositionY == $y)
+                                    {
+                                        echo substr($seat->SeatTypeName,0,1);
+                                        $found = true;
+                                    }
+                                }
+                                if(!$found){ echo "X"; }
+                                echo "</td>";
+                            } ?>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>                
+            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

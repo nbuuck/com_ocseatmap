@@ -37,6 +37,21 @@ class OCSeatMapModelSeatMaps extends JModelItem
         $query->from('#__ocseatmap_seatmap');
         $db->setQuery((string)$query);
         $seatmaps = $db->loadObjectList();
+        foreach($seatmaps as $seatmap)
+        {
+            $seatmap->Seats = $this->getSeatMapSeats($seatmap->ID);
+        }
         return $seatmaps;
+    }
+    public function getSeatMapSeats($SeatMapID)
+    {
+        $db = JFactory::getDBO();
+        $query = $db->getQuery(true);
+        $query->select('PositionX,PositionY,SeatTypeName');
+        $query->from('#__ocseatmap_seat');
+        $query->where('SeatMapID='.$SeatMapID);
+        $db->setQuery((string)$query);
+        $seats = $db->loadObjectList();
+        return $seats;
     }
 }
