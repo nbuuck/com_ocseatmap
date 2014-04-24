@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * The MIT License
  *
  * Copyright 2014 nbuuck.
@@ -26,13 +26,19 @@
 
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
- 
-class OCSeatMapViewSeatMap extends JViewLegacy
-{
-        // Overwriting JView display method
-        function display($tpl = null) 
-        {
-                // Assign data to the view
-                
-        }
+
+class OCSeatMapViewSeatMap extends JViewLegacy {
+
+    // Overwriting JView display method
+    function display($tpl = null) {
+        // Get parameter field (from Menu item or URL param)
+        $jinput = JFactory::getApplication()->input;
+        $SeatMapID = $jinput->get('SeatMapID', 1, 'INT');
+        // Assign data to the view
+        $model = $this->getModel();
+        $this->SeatMap = $model->getSeatMap($SeatMapID);
+        $this->Seats = $model->getSeatMapSeats($SeatMapID);
+        parent::display($tpl);
+    }
+
 }

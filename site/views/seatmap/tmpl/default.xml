@@ -30,18 +30,16 @@ THE SOFTWARE.
         </message>
     </layout>
     <fields name="request">
-        <!-- @TODO Implement a JFormField such as in com_content:
-            https://github.com/joomla/joomla-cms/blob/staging/components/com_content/views/article/tmpl/default.xml
-            https://github.com/joomla/joomla-cms/blob/staging/administrator/components/com_content/models/fields/modal/article.php
-            -->
         <fieldset name="request">
             <field
-                name="id"
-                type="list"
+                name="SeatMapID"
+                type="sql"
                 label="COM_OCSEATMAP_VIEW_SEATMAP_ID_LABEL"
                 description="COM_OCSEATMAP_VIEW_SEATMAP_ID_DESC"
+                key_field="ID"
+                value_field="Name"
+                query="SELECT ID,Name FROM #__ocseatmap_seatmap"
                 default="1">
-                <option value="1">?</option>
             </field>
         </fieldset>
     </fields>
