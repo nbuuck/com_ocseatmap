@@ -43,31 +43,43 @@ defined('_JEXEC') or die('Restricted access');
 
 <?php
 $SeatMap = $this->SeatMap;
+$Seats = $this->Seats;
+
+function getSeatType($x, $y, $seats) {
+    foreach ($seats as $seat) {
+        if ($seat->PositionX == $x && $seat->PositionY == $y) {
+            return $seat->SeatTypeName;
+        }
+    }
+    return "";
+}
 ?>
 <h3><?= $SeatMap->Name ?></h3>
 <table style="border-width:1px; border-style: solid;">
     <tbody>
-        <?php
-        for ($y = 0; $y < $SeatMap->SizeY; $y++) {
-            print '<tr class="seats">'."\n";
-            for ($x = 0; $x < $SeatMap->SizeX; $x++) {
-                print "\t".'<td id="cell-' . $x . "-" . $y . '" class="seat';
-                foreach ($this->Seats as $seat) {
-                    if ($seat->PositionX == $x && $seat->PositionY == $y) {
-                        if ($seat->SeatTypeName == "Player") {
-                            echo ' seat-vip';
-                            break;
-                        }
-                        if ($seat->SeatTypeName == "VIP") {
-                            echo ' seat-player';
-                            break;
-                        }
-                    }
-                }
-                print '"></td>'."\n";
-            }
-            print "</tr>\n";
+<?php
+for ($y = 0; $y < $SeatMap->SizeY; $y++) {
+    print '<tr class="seats">' . "\n";
+    for ($x = 0; $x < $SeatMap->SizeX; $x++) {
+        $type = getSeatType($x, $y, $Seats);
+        $classes = "seat";
+        $title = "";
+        switch ($type) {
+            case 'VIP':
+                $classes .= " seat-vip hasTip";
+                $title = "Seat $y,$x::Type: $type";
+                break;
+            case 'Player':
+                $classes .= " seat-player hasTip";
+                $title = "Seat $y,$x::Type: $type";
+                break;
         }
-        ?>
+        print "\t<td id=\"seat-$x-$y\"" .
+                " title=\"$title\" class=\"$classes\"></td>\n";
+    }
+    print "</tr>\n";
+}
+JHtml::_('behavior.tooltip', '.hasTip', $null);
+?>
     </tbody>
 </table>
