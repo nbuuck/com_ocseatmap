@@ -81,11 +81,11 @@ for ($y = 0; $y < $SeatMap->SizeY; $y++) {
         switch ($type) {
             case 'VIP':
                 $classes .= " seat-vip hasTip";
-                $title = "Seat $y,$x::Type: $type";
+                $title = "Seat $x,$y::Type: $type";
                 break;
             case 'Player':
                 $classes .= " seat-player hasTip";
-                $title = "Seat $y,$x::Type: $type";
+                $title = "Seat $x,$y::Type: $type";
                 break;
         }
         print "\t<td id=\"seat-$x-$y\"" .
