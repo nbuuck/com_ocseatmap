@@ -41,6 +41,14 @@ THE SOFTWARE.
                 query="SELECT ID,Name FROM #__ocseatmap_seatmap"
                 default="1">
             </field>
+            <field
+                name="BackgroundImageURL"
+                type="filelist"
+                label="COM_OCSEATMAP_VIEW_SEATMAP_BGURL_LABEL"
+                description="COM_OCSEATMAP_VIEW_SEATMAP_BGURL_DESC"
+                directory="/images"
+                hide_default="true">
+            </field>
         </fieldset>
     </fields>
 </metadata>

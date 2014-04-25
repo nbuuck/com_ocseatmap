@@ -38,6 +38,8 @@ class OCSeatMapViewSeatMap extends JViewLegacy {
         $model = $this->getModel();
         $this->SeatMap = $model->getSeatMap($SeatMapID);
         $this->Seats = $model->getSeatMapSeats($SeatMapID);
+        $this->BackgroundImageURL = 
+                $jinput->get('BackgroundImageURL', 1, 'STRING');
         parent::display($tpl);
     }
 

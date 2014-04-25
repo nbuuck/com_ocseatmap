@@ -26,18 +26,32 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <style type="text/css">
+    table.seatmap {
+        border-width:1px;
+        border-style: solid;
+        background-image: url('/images/<?= $this->BackgroundImageURL ?>');
+        background-repeat: no-repeat;
+    }
     tr.seats{
-        height:10px;
+        height:13px;
     }
     td.seat{
-        border:1px solid black;
+        //border:1px solid black;
         width:10px;
     }
     td.seat-player{
+        border:1px solid black;
         background-color:orange;
     }
+    td.seat-player-occupied{
+        background-color:red;
+    }
     td.seat-vip{
+        border:1px solid black;
         background-color:purple;
+    }
+    td.seat-vip-occupied{
+        background-color:red;
     }
 </style>
 
@@ -45,7 +59,7 @@ defined('_JEXEC') or die('Restricted access');
 $SeatMap = $this->SeatMap;
 ?>
 <h3><?= $SeatMap->Name ?></h3>
-<table style="border-width:1px; border-style: solid;">
+<table class="seatmap">
     <tbody>
         <?php
         for ($y = 0; $y < $SeatMap->SizeY; $y++) {
