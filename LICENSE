@@ -1,3 +1,9 @@
+Significant portions of the code base are based on the "Developing a MVC 
+Component" article series from Joomla 
+(http://docs.joomla.org/J3.2:Developing_a_MVC_Component/Introduction).
+
+All novel parts of the code base are subject to the following license.
+
 The MIT License (MIT)
 
 Copyright (c) 2014 Nathan Buuck
