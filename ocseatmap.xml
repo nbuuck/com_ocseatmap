@@ -26,7 +26,6 @@
     </update>
 
     <files folder="site">
-        <filename>index.html</filename>
         <filename>ocseatmap.php</filename>
         <filename>controller.php</filename>
         <folder>views</folder>
@@ -36,7 +35,6 @@
     <administration>
         <menu>COM_OCSEATMAP</menu>
         <files folder="admin">
-            <filename>index.html</filename>
             <filename>ocseatmap.php</filename>
             <filename>config.xml</filename>
             <filename>controller.php</filename>
@@ -44,6 +42,7 @@
             <folder>language</folder>
             <folder>models</folder>
             <folder>sql</folder>
+            <folder>tables</folder>
             <folder>views</folder>
         </files>
     </administration>
